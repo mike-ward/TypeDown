@@ -5,10 +5,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prismMvvm="using:Prism.Windows.Mvvm"
+    xmlns:views="using:TypeDown.Views"
+    xmlns:controls="using:TypeDown.Controls"
     prismMvvm:ViewModelLocator.AutoWireViewModel="True"
     mc:Ignorable="d">
 
-  <Border VerticalAlignment="Center" HorizontalAlignment="Center">
-    <TextBlock Text="{x:Bind Path=ConcreteDataContext.DisplayText}"></TextBlock>
-  </Border>
+  <controls:UniformGrid Rows="1" Columns="2">
+    <views:EditorControl />
+    <views:PreviewControl />
+  </controls:UniformGrid>
 </prismMvvm:SessionStateAwarePage>

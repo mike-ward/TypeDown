@@ -23,16 +23,17 @@ namespace TypeDown
             return shell;
         }
 
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+
+            Container.RegisterType<IAlertMessageService, AlertMessageService>(new ContainerControlledLifetimeManager());
+        }
+
         protected override Task OnLaunchApplicationAsync(LaunchActivatedEventArgs args)
         {
             NavigationService.Navigate(Page.NameFromType(typeof(MainPage)), null);
             return Task.FromResult(true);
-        }
-
-        protected override Task OnInitializeAsync(IActivatedEventArgs args)
-        {
-            Container.RegisterType<IAlertMessageService, AlertMessageService>(new ContainerControlledLifetimeManager());
-            return base.OnInitializeAsync(args);
         }
     }
 }
